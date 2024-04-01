@@ -11,15 +11,22 @@ import
     Th,
     Td,
     TableCaption,
+    Badge,
     TableContainer,
 } from '@chakra-ui/react';
 
 const currDirData = [
     {
-        "name": "file1",
+        "name": "test_img.png",
         "type": "FILE",
         "id": "fb9d852a-88b2-4980-8e12-1d19bd733a1f",
         "size": "1.2MB"
+    },
+    {
+        "name": "hello.txt",
+        "type": "FILE",
+        "id": "fb9d852a-88b2-4980-8e12-1d19bd733ak9",
+        "size": "1.5MB"
     }
 ];
 export default function StorageDynamic()
@@ -50,7 +57,7 @@ export default function StorageDynamic()
                             {currDirData.map((item) => (
                                 <Tr key={item.id}>
                                     <Td>{item.name}</Td>
-                                    <Td>{item.type}</Td>
+                                    <Td><Badge colorScheme="green">{item.type}</Badge></Td>
                                     <Td>{item.size}</Td>
 
                                 </Tr>

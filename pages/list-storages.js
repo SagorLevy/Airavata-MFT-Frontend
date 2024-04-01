@@ -13,6 +13,7 @@ import
     TableContainer,
     Heading,
     Container,
+    Badge,
     Flex
 } from '@chakra-ui/react';
 import { NavBar } from '../components/NavBar';
@@ -72,7 +73,7 @@ export default function ListStorages()
                                     return (
                                         <Tr key={index}>
                                             <Td>{item.name}</Td>
-                                            <Td>{item.type}</Td>
+                                            <Td><Badge colorScheme="blue">{item.type}</Badge></Td>
                                             <Td>{item.id}</Td>
                                             <Td>
                                                 <Flex gap={2}>
