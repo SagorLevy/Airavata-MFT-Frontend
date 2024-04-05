@@ -15,6 +15,8 @@ import
     TableContainer,
 } from '@chakra-ui/react';
 
+import { Item } from '../../components/Item';
+
 const currDirData = [
     {
         "name": "test_img.png",
@@ -51,16 +53,13 @@ export default function StorageDynamic()
                                 <Th>Name</Th>
                                 <Th>Type</Th>
                                 <Th>Size</Th>
+                                <Th>ID</Th>
+                                <Th>Actions</Th>
                             </Tr>
                         </Thead>
                         <Tbody>
                             {currDirData.map((item) => (
-                                <Tr key={item.id}>
-                                    <Td>{item.name}</Td>
-                                    <Td><Badge colorScheme="green">{item.type}</Badge></Td>
-                                    <Td>{item.size}</Td>
-
-                                </Tr>
+                                <Item key={item.id} name={item.name} size={item.size} id={item.id} type={item.type} />
                             ))}
                         </Tbody>
                     </Table>

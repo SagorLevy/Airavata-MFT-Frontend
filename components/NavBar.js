@@ -18,6 +18,10 @@ export const NavBar = () =>
                         color: 'blue.800'
                     }}>List Storages</Link>
 
+                    <Link href='/add-storage' _hover={{
+                        color: 'blue.800'
+                    }}>Add Storage</Link>
+
                 </Flex>
             </Flex>
         </Box>

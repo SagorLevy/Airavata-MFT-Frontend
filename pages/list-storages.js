@@ -36,12 +36,18 @@ export default function ListStorages()
     {
         async function getData()
         {
-            const response = await fetch('https://jsonplaceholder.typicode.com/todos/3');
+            const response = await fetch('http://localhost:5500/list-storages', {
+                method: 'GET',
+                headers: {
+                    'currentPath': 'list-storages',
+                }
+            });
             const data = await response.json();
             console.log('second page: ', data);
         }
 
-        getData();
+        // getData();
+
     }, []);
 
     const handleDelete = async (id) =>
@@ -53,8 +59,13 @@ export default function ListStorages()
             <NavBar />
 
             <Container maxW='container.2xl' p={4}>
-                <Heading color='blue.600' size='lg'>List Storages</Heading>
+                <Flex justify='space-between' alignItems='center'>
+                    <Heading color='blue.600' size='lg'>List Storages</Heading>
 
+                    <Button bg='blue.400' size='sm' color='white' _hover={{
+                        bg: 'blue.600'
+                    }} as='a' href='/add-storage'>Add Storage</Button>
+                </Flex>
                 <TableContainer mt={8}>
                     <Table variant='simple'>
                         <TableCaption>List of all MFT storages</TableCaption>
