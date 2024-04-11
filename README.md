@@ -5,6 +5,10 @@
 ![](https://i.ibb.co/GJTrtCN/Screenshot-2024-04-01-at-2-21-32-AM.png)
 
 ## To run the project:
+
+> For any questions, please email: Ganning Xu (ganning.xu@gatech.edu)
+
+
 1. Clone the repository: `git clone https://github.com/ganning127/mft-ui-nextjs`
 2. Navigate to the project directory: `cd mft-ui-nextjs`
 3. Install dependencies: `npm install`
@@ -16,3 +20,5 @@
 - Add Storages
 - Delete Storages
 - List files within storage
+
+
