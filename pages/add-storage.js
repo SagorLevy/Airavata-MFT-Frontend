@@ -5,14 +5,8 @@ import { Field, FieldArray, Form, Formik } from 'formik';
 import
 {
     Button, Text, Table,
-    Thead,
-    Tbody,
-    Tfoot,
-    Tr,
-    Th,
-    Td,
-    TableCaption,
-    TableContainer,
+    Alert,
+    AlertIcon,
     Heading,
     Container,
     Badge,
@@ -35,34 +29,18 @@ import
 
 } from '@chakra-ui/react';
 import { NavBar } from '../components/NavBar';
+import { Notice } from '../components/Notice';
 export default function AddStorage()
 {
-    // useEffect(() =>
-    // {
-    //     async function getData()
-    //     {
-    //         const response = await fetch('http://localhost:5500/list-storages', {
-    //             method: 'GET',
-    //             headers: {
-    //                 'currentPath': 'add-storages',
-    //             }
-    //         });
-    //         const data = await response.json();
-    //         console.log('second page: ', data);
-    //     }
-
-    //     getData();
-    // }, []);
-
-    const handleDelete = async (id) =>
-    {
-        console.log('deleting: ', id);
-    };
     return (
         <>
             <NavBar />
+            <Notice status="info">
+                This page is still under construction
+            </Notice>
 
             <Container maxW='container.2xl' p={4}>
+
                 <Flex justify='space-between' alignItems='center'>
                     <Heading color='blue.600' size='lg'>Add Storage</Heading>
 

@@ -1,5 +1,5 @@
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import
 {
     Button, Text, Table,
@@ -18,20 +18,14 @@ import
 } from '@chakra-ui/react';
 import { NavBar } from '../components/NavBar';
 
-const data = [
-    {
-        "name": "macbook",
-        "type": "LOCAL",
-        "id": "fb9d852a-88b2-4980-8e12-1d19bd733a1f"
-    },
-    {
-        "name": "scpazure",
-        "type": "SCP",
-        "id": "5b0f4c23-bc87-43de-acc4-e4004f1e3d20"
-    },
-];
+const colorSchemeMapper = {
+    "SCP": "purple",
+    "LOCAL": "green",
+    "S3": "blue",
+};
 export default function ListStorages()
 {
+    const [dataUse, setDataUse] = useState([{}]);
     useEffect(() =>
     {
         async function getData()
@@ -44,9 +38,11 @@ export default function ListStorages()
             });
             const data = await response.json();
             console.log('second page: ', data);
+            setDataUse(data.storageList);
+
         }
 
-        // getData();
+        getData();
 
     }, []);
 
@@ -79,18 +75,18 @@ export default function ListStorages()
                         </Thead>
                         <Tbody alignitems='center'>
                             {
-                                data.map((item, index) =>
+                                dataUse.map((item, index) =>
                                 {
                                     return (
                                         <Tr key={index}>
-                                            <Td>{item.name}</Td>
-                                            <Td><Badge colorScheme="blue">{item.type}</Badge></Td>
-                                            <Td>{item.id}</Td>
+                                            <Td>{item.storageName}</Td>
+                                            <Td><Badge colorScheme={colorSchemeMapper[item.storageType]}>{item.storageType}</Badge></Td>
+                                            <Td>{item.storageId}</Td>
                                             <Td>
                                                 <Flex gap={2}>
                                                     <Button bg='green.300' size='sm' color='white' _hover={{
                                                         bg: 'green.600'
-                                                    }} as='a' href={`storage/${item.id}`}>Open</Button>
+                                                    }} as='a' href={`storage/${item.storageId}?storagetype=${item.storageType}&storagename=${item.storageName}&path=/`}>Open</Button>
 
                                                     <Button bg='red.300' size='sm' color='white' _hover={{
                                                         bg: 'red.600'

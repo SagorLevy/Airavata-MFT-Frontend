@@ -14,22 +14,37 @@ import
     PopoverAnchor,
 } from "@chakra-ui/react";
 
-export const Item = ({ name, type, size, path, id }) =>
-{
+import { Notice } from "./Notice";
 
+export const Item = ({ name, type, size, router, id, path }) =>
+{
     const handleMove = async () =>
     {
         console.log('moving: ', id);
     };
+
+    const handleClick = () =>
+    {
+        if (type === "FILE")
+        {
+            return;
+        }
+        let currPath = 'http://localhost:3000' + router.asPath;
+        let urlCurrPath = new URL(currPath);
+        urlCurrPath.searchParams.set('path', path);
+        router.push(urlCurrPath.toString());
+    };
     return (
-        <Tr>
+        <Tr onClick={handleClick} transition='all.2s' _hover={type === "DIR" ? {
+            cursor: 'pointer',
+            bg: 'blue.200'
+        } : {}}>
             <Td>{name}</Td>
-            <Td><Badge colorScheme="green">{type}</Badge></Td>
+            <Td><Badge colorScheme={type === "FILE" ? "purple" : "green"}>{type}</Badge></Td>
             <Td>{size}</Td>
-            <Td>{id}</Td>
 
 
-            <Td>
+            <Td >
                 <Popover>
                     <PopoverTrigger>
                         <Button>Move</Button>
@@ -37,8 +52,10 @@ export const Item = ({ name, type, size, path, id }) =>
                     <PopoverContent>
                         <PopoverArrow />
                         <PopoverCloseButton />
-                        {/* <PopoverHeader>Move To</PopoverHeader> */}
                         <PopoverBody>
+                            <Notice status="info">
+                                Under construction
+                            </Notice>
                             <Text fontWeight='bold' mb={4}>Move To</Text>
                             <Box>
                                 <Input placeholder="Path" />
