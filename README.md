@@ -11,7 +11,7 @@
 
 ### Building the Distrubution
 
-1. Clone this frontend repository:<br>`https://github.com/Devins-Undergraduate-Education/Airavata-MFT-Frontend`
+1. Clone this frontend repository:<br>```https://github.com/Devins-Undergraduate-Education/Airavata-MFT-Frontend```
 2. Navigate to the project directory:<br> `cd mft-ui-nextjs`
 3. Install dependencies:<br> `npm i`
 4. Run the project:<br> `npm run dev`
