@@ -14,6 +14,11 @@ export const NavBar = () =>
                     <Link href='/' _hover={{
                         color: 'blue.700'
                     }}>Home</Link>
+    
+                    <Link href='/install-apache-airavata' _hover={{
+                        color: 'blue.700'
+                    }}>Install Apache Airavata</Link>
+    
                     <Link href='/list-storages' _hover={{
                         color: 'blue.700'
                     }}>List Storages</Link>
