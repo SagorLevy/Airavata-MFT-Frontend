@@ -103,18 +103,18 @@ const LinuxMacOS = () => {
         <>
             <h1>Under Construction</h1>
             <ol>
-                <li>Download Apache Airavata for Windows from the official website.</li>
+                <li>Download Apache Airavata for MacOS from the official website.</li>
                 <li>Run the installer and follow the on-screen instructions.</li>
-                <li>Set up a default UNIX-like environment using WSL (Windows Subsystem for Linux).</li>
-                <li>Open WSL and execute the following commands:</li>
-                <li>wsl--install (installs Linux)</li>
-                <li>sudo apt update</li>
-                <li>sudo apt install python3-pip</li>
-                <li>sudo apt install default-jre</li>
+                <li>Set up a default virtual environment running at least python3.10+ and Java11+.</li>
+                <li>Open Terminal and execute the following commands:</li>
                 <li>python3.10 -m venv venv</li>
                 <li>source venv/bin/activate</li>
                 <li>pip install airavata-mft-cli</li>
-                <li>mfi init (starts mft)</li>
+                <li>mft init (starts mft)</li>
+                <li>If MFT server is unavailable run commands:</li>
+                <li>cd ~/.mft/Standalone-Service-0.01/bin</li>
+                <li>./standalone-service-daemon.sh stop</li>
+                <li>./standalone-service-daemon.sh start</li>
             </ol>
         </>
     );
