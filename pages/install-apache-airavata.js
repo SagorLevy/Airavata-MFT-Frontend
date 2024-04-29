@@ -29,37 +29,28 @@ import
 
 } from '@chakra-ui/react';
 import { NavBar } from '../components/NavBar';
-import { Notice } from '../components/Notice';
-export default function AddStorage()
+export default function InstallApacheAiravata()
 {
     return (
         <>
             <NavBar />
-            <Notice status="info">
-                This page is still under construction
-            </Notice>
 
             <Container maxW='container.2xl' p={4}>
 
                 <Flex justify='space-between' alignItems='center'>
-                    <Heading color='blue.600' size='lg'>Add Storage</Heading>
-
-                    <Button bg='blue.400' size='sm' color='white' _hover={{
-                        bg: 'blue.600'
-                    }} as='a' href='/list-storages'>Back to List Storage</Button>
-                </Flex>
+                    <Heading color='blue.600' size='lg'>Installing Apache Airavata</Heading>
 
                 <Tabs mt={8} variant='unstyled'>
                     <TabList>
-                        <Tab rounded='md' _selected={{ color: 'white', bg: 'yellow.500' }}>SCP</Tab>
-                        <Tab rounded='md' _selected={{ color: 'white', bg: 'purple.400' }}>S3</Tab>
+                        <Tab rounded='md' _selected={{ color: 'white', bg: 'orange.500' }}>SCP</Tab>
+                        <Tab rounded='md' _selected={{ color: 'white', bg: 'green.400' }}>S3</Tab>
                     </TabList>
                     <TabPanels>
-                        <TabPanel bg='yellow.50' p={4} rounded='md'>
-                            <SCPForm />
+                        <TabPanel bg='orange.50' p={4} rounded='md'>
+                            <Windows />
                         </TabPanel>
-                        <TabPanel bg='purple.50' p={4} rounded='md'>
-                            <S3Form />
+                        <TabPanel bg='green.50' p={4} rounded='md'>
+                            <LinuxMacOS />
                         </TabPanel>
                     </TabPanels>
                 </Tabs>
@@ -70,180 +61,57 @@ export default function AddStorage()
 }
 
 
-const SCPForm = () =>
+const Windows = () =>
 {
     return (
         <>
-            <Formik
-                initialValues={{
-                    private_key_location: '~/.ssh/id_rsa',
-                    public_key_location: '~/.ssh/id_rsa.pub',
-                    passphrase: '',
-                    host_name_ip: '172.172.240.41',
-                    username: 'azureuser',
-                    storage_name: 'scp-storage',
-                }}
-                onSubmit={(values, actions) =>
-                {
-                    alert(JSON.stringify(values, null, 2));
-                    actions.setSubmitting(false);
-                }}
-            >
-                {(props) => (
-                    <Form>
-                        <SimpleGrid columns={2} spacing={4}>
-                            <Field name='private_key_location'>
-                                {({ field, form }) => (
-                                    <>
-                                        <FormControl isRequired>
-                                            <FormLabel>Private Key Location</FormLabel>
-                                            <Input {...field} placeholder='private key location' />
-                                        </FormControl>
-                                    </>
-                                )}
-                            </Field>
-
-                            <Field name='public_key_location'>
-                                {({ field, form }) => (
-                                    <>
-                                        <FormControl isRequired>
-                                            <FormLabel>Public Key Location</FormLabel>
-                                            <Input {...field} placeholder='public key location' />
-                                        </FormControl>
-                                    </>
-                                )}
-                            </Field>
-
-                            <Field name='passphrase'>
-                                {({ field, form }) => (
-                                    <>
-                                        <FormControl>
-                                            <FormLabel>Passphrase</FormLabel>
-                                            <Input {...field} placeholder='SSH passphrase' />
-                                        </FormControl>
-                                    </>
-                                )}
-                            </Field>
-
-                            <Field name='host_name_ip'>
-                                {({ field, form }) => (
-                                    <>
-                                        <FormControl isRequired>
-                                            <FormLabel>Host Name/IP</FormLabel>
-                                            <Input {...field} placeholder='hostname/ip' />
-                                        </FormControl>
-                                    </>
-                                )}
-                            </Field>
-
-                            <Field name='username'>
-                                {({ field, form }) => (
-                                    <>
-                                        <FormControl isRequired>
-                                            <FormLabel>Username</FormLabel>
-                                            <Input {...field} placeholder='username' />
-                                        </FormControl>
-                                    </>
-                                )}
-                            </Field>
-                            <Field name='storage_name'>
-                                {({ field, form }) => (
-                                    <>
-                                        <FormControl isRequired>
-                                            <FormLabel>Username</FormLabel>
-                                            <Input {...field} placeholder='storage name' />
-                                        </FormControl>
-                                    </>
-                                )}
-                            </Field>
-
-                        </SimpleGrid>
-                        <Button
-                            mt={4}
-                            colorScheme='yellow'
-                            isLoading={props.isSubmitting}
-                            type='submit'
-                        >
-                            Submit
-                        </Button>
-                    </Form>
-                )}
-            </Formik>
-
+                return (
+        <>
+            <h1>Installation Steps for Windows</h1>
+            <ol>
+                <li>Download Apache Airavata for Windows from the official website.</li>
+                <li>Run the installer and follow the on-screen instructions.</li>
+                <li>Set up a default UNIX-like environment using WSL (Windows Subsystem for Linux).</li>
+                <li>Open WSL and execute the following commands:</li>
+                <ul>
+                    <li>wsl --install (installs Linux)</li>
+                    <li>sudo apt update</li>
+                    <li>sudo apt install python3-pip</li>
+                    <li>sudo apt install default-jre</li>
+                    <li>python3.10 -m venv venv</li>
+                    <li>source venv/bin/activate</li>
+                    <li>pip install airavata-mft-cli</li>
+                    <li>mfi init (starts mft)</li>
+                </ul>
+            </ol>
+        </>
+    );
+};
         </>
     );
 };
 
 
-const S3Form = () =>
+const LinuxMacOS = () =>
 {
-    const [isSessionToken, setIsSessionToken] = useState(true);
-    const [isS3Bucket, setIsS3Bucket] = useState(false);
     return (
         <>
-            <Formik
-                initialValues={{
-                    access_key_id: '???',
-                    secret_access_key: '???',
-                }}
-                onSubmit={(values, actions) =>
-                {
-                    alert(JSON.stringify(values, null, 2));
-                    actions.setSubmitting(false);
-                }}
-            >
-                {(props) => (
-                    <Form>
-                        <SimpleGrid columns={2} spacing={4}>
-                            <Field name='access_key_id'>
-                                {({ field, form }) => (
-                                    <>
-                                        <FormControl isRequired>
-                                            <FormLabel>Access Key ID</FormLabel>
-                                            <Input {...field} placeholder='access_key_id' />
-                                        </FormControl>
-                                    </>
-                                )}
-                            </Field>
-
-                            <Field name='secret_access_key'>
-                                {({ field, form }) => (
-                                    <>
-                                        <FormControl isRequired>
-                                            <FormLabel>Secret Access Key</FormLabel>
-                                            <Input {...field} placeholder='secret_access_key' />
-                                        </FormControl>
-                                    </>
-                                )}
-                            </Field>
-
-
-                            <FormControl>
-                                <FormLabel>Session Token?</FormLabel>
-                                <Switch isChecked={isSessionToken}
-                                    onChange={() => setIsSessionToken(!isSessionToken)} colorScheme='purple' />
-                            </FormControl>
-
-                            <FormControl>
-                                <FormLabel>AWS S3 Bucket?</FormLabel>
-                                <Switch isChecked={isS3Bucket}
-                                    onChange={() => setIsS3Bucket(!isS3Bucket)} colorScheme='purple' />
-                            </FormControl>
-
-                        </SimpleGrid>
-
-                        <Button
-                            mt={4}
-                            colorScheme='purple'
-                            isLoading={props.isSubmitting}
-                            type='submit'
-                        >
-                            Submit
-                        </Button>
-                    </Form>
-                )}
-            </Formik>
-
+            <h1>Under Construction</h1>
+            <ol>
+                <li>Download Apache Airavata for Windows from the official website.</li>
+                <li>Run the installer and follow the on-screen instructions.</li>
+                <li>Set up a default UNIX-like environment using WSL (Windows Subsystem for Linux).</li>
+                <li>Open WSL and execute the following commands:</li>
+                <ul>
+                    <li>wsl --install (installs Linux)</li>
+                    <li>sudo apt update</li>
+                    <li>sudo apt install python3-pip</li>
+                    <li>sudo apt install default-jre</li>
+                    <li>python3.10 -m venv venv</li>
+                    <li>source venv/bin/activate</li>
+                    <li>pip install airavata-mft-cli</li>
+                    <li>mfi init (starts mft)</li>
+                </ul>
+            </ol>
         </>
-    );
 };
