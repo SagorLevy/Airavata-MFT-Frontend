@@ -23,12 +23,15 @@ cd Airavata-MFT-Backend
 ```
 npm i
 ```
-5. From a seperate terminal, run Apache Airavata mft *(see [Apache Airavata Github](https://github.com/apache/airavata-mft)*
+5. From a seperate terminal, run Apache Airavata mft *(see [Apache Airavata Github](https://github.com/apache/airavata-mft))*
+```
+mft init
+```
 6. Run the project
 ```
 npm run dev
 ```
-7. If the page has not automatically opened, open your browser and navigate to `http://localhost:3000`
+7. If the page has not automatically opened, open your browser and navigate to `http://localhost:3000`<br><br>
 
 ---
 
