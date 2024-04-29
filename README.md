@@ -28,9 +28,9 @@ npm i
 npm run dev
 ```
 6. If the page has not automatically opened, open your browser and navigate to `http://localhost:3000`
-
+<br>
 ---
-
+<br>
 ## Current Features:
 - List storages
 - List file within storage
@@ -38,5 +38,4 @@ npm run dev
 ## Unsupported Features
 - Add Storages
 
-
-*By: Ganning Xu*
+<br><br><br>*By: Ganning Xu*
