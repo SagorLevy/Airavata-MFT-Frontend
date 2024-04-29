@@ -27,11 +27,11 @@ npm i
 ```
 npm run dev
 ```
-6. If the page has not automatically opened, open your browser and navigate to `http://localhost:3000` <br>
+6. If the page has not automatically opened, open your browser and navigate to `http://localhost:3000`
 
 ---
 
-<br>## Current Features:
+## Current Features:
 - List storages
 - List file within storage
 
